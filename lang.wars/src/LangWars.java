@@ -10,24 +10,30 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class LangWars extends Application 
+public class LangWars extends Application
 {
     @Override
 
     public void start(Stage primaryStage)
     {
-    LangWarsPane pane = new LangWarsPane();
-    pane.setAlignment(Pos.CENTER);
-    pane.setStyle("-fx-background-color: black");
-        
-    Scene scene = new Scene(pane, 1000, 650);
-      primaryStage.setTitle("LANG.WARS");
+        LangWarsPane pane = new LangWarsPane();
+        Scene scene = new Scene(pane, 1280, 800);
+        pane.setAlignment(Pos.CENTER);
+        pane.setStyle("-fx-background-color: white");
+        primaryStage.setTitle("LANG.WARS");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-        
+       
     public static void main(String[] args) 
     {
+
+        LangWarsPlayer player = new LangWarsPlayer(30,10,"New Player");
+        LangWarsPlayer computer = new LangWarsPlayer(30,10,"Computer");
+
+        System.out.println("New Player : " + player);
+        System.out.println("Computer   : " + computer);
+        
         launch(args);
     }    
 }
