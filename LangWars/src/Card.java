@@ -1,4 +1,4 @@
-package lang.wars;
+package LangWars;
 
 /**
  * Basic Template for a Card

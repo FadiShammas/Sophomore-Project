@@ -1,4 +1,4 @@
-package lang.wars;
+package LangWars;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;

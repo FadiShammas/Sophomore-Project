@@ -2,7 +2,7 @@
  * @author CSE29999_Fall2017_Team6
  */
 
-package lang.wars;
+package LangWars;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;

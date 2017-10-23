@@ -1,4 +1,4 @@
-package lang.wars;
+package LangWars;
 
 /**
  * Template for a creature card
