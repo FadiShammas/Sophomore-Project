@@ -1,35 +1,29 @@
-package LangWars;
+package langwars;
 
 /**
- * Template for a creature card
+ * Template for a spell card
  * 
  * @author Jake
  */
-public class Creature extends Card {
+public class Spell extends Card {
     
-    protected int hp, atk;
-
-    public Creature() {
+    protected String mechanic;
+    
+    public Spell(){
+        
     }
-
-    public Creature(String name, String art, String desc, int cost, int hp, int atk) {
+    
+    public Spell(String name, String art, String desc, int cost, String mechanic){
         super(name, art, desc, cost);
+        this.mechanic = mechanic;
     }
 
-    public int getHp() {
-        return hp;
+    public String getMechanic() {
+        return mechanic;
     }
 
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
-
-    public int getAtk() {
-        return atk;
-    }
-
-    public void setAtk(int atk) {
-        this.atk = atk;
+    public void setMechanic(String mechanic) {
+        this.mechanic = mechanic;
     }
 
     public String getName() {
@@ -63,7 +57,7 @@ public class Creature extends Card {
     public void setCost(int cost) {
         this.cost = cost;
     }
-    
-    
+
+
     
 }

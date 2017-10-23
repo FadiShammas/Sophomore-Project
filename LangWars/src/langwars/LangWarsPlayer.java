@@ -1,4 +1,4 @@
-package LangWars;
+package langwars;
 
 import java.text.NumberFormat;
 
