@@ -29,8 +29,8 @@ public class LangWarsPane extends HBox
         Timeline timeline = new Timeline
         (
             new KeyFrame(Duration.ZERO, new KeyValue(boardView.imageProperty(), splashImage)),
-            new KeyFrame(Duration.seconds(2), new KeyValue(boardView.imageProperty(), loadingImage)),
-            new KeyFrame(Duration.seconds(7), new KeyValue(boardView.imageProperty(), boardImage))
+            new KeyFrame(Duration.seconds(5), new KeyValue(boardView.imageProperty(), loadingImage)),
+            new KeyFrame(Duration.seconds(10), new KeyValue(boardView.imageProperty(), boardImage))
          );
 
         timeline.play();      
