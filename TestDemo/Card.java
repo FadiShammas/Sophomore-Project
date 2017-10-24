@@ -20,7 +20,7 @@ public class Card {
         this.cost = cost;
     }
 
-    public Card(int cost) {         //Constructor for testing purposes
+    public Card(String name, int cost) {         //Constructor for testing purposes
         this.cost = cost;
     }
     
@@ -50,6 +50,8 @@ public class Card {
         this.cost = cost;
     }
     
-    public void setInhand(int inhand) {
-    }
+    public void setInhand(int inhand) {}
+    public void setExhausted(int exhausted){}
+    
+    
 }

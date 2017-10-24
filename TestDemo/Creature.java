@@ -7,15 +7,14 @@ package test.wars;
  */
 public class Creature extends Card {
     
-    protected int hp, atk, chp, inhand;
+    protected int hp, atk, chp, inhand, exhausted;
 
- 
-
-    public Creature(int cost, int atk, int hp) {
-        super(cost);
+    public Creature(String name, int cost, int atk, int hp) {
+        super(name, cost);
         this.hp = hp;
         this.atk = atk;
         chp = hp;
+        exhausted = 1;
     }
 
     
@@ -42,10 +41,12 @@ public class Creature extends Card {
         this.atk = atk;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -89,7 +90,14 @@ public class Creature extends Card {
     public void setInhand(int inhand) {
         this.inhand = inhand;
     }
-    
+
+    public int getExhausted() {
+        return exhausted;
+    }
+
+    public void setExhausted(int exhausted) {
+        this.exhausted = exhausted;
+    }
     
     
 }
