@@ -1,4 +1,4 @@
-package test.wars;
+package TestWars;
 
 /**
  * Template for a creature card

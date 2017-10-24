@@ -1,4 +1,4 @@
-package test.wars;
+package TestWars;
 
 /**
  * Basic Template for a Card

@@ -3,7 +3,7 @@
 2 * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test.wars;
+package TestWars;
 
 import java.util.Scanner;
 
@@ -211,6 +211,8 @@ public class TestWars {
                 }
             }    
         }
+        Clear();
+        System.out.println("Opponent has been defeated!\nYou win!");
     }
     
     public static int Attack(Creature source, int ohp){

@@ -25,7 +25,7 @@ public class Board {
 
                 try {
                     // Load the background image
-                    Image img = ImageIO.read(getClass().getResource("Resources/Images/Board/board.png"));
+                    Image img = ImageIO.read(getClass().getResource("Resources\\Images\\Board\\board.png"));
 
                     // Create the frame...
                     JFrame frame = new JFrame("Testing");
