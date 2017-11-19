@@ -4,14 +4,26 @@
 
 package langwars_demo2;
 
+import java.awt.*;
+import java.awt.event.*;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
 public class LangWars_Demo2
     {
-    private static SplashWindow mySplash;
     private static Board myFrame;
 
     public static void main(String[] args)
     {
-        mySplash = new SplashWindow("splash.jpg",4000);
+        try
+        {
+        Thread.sleep(4500);    
+        } 
+        catch(Exception e)
+        {
+        }
+        
         myFrame = new Board();
         //you can edit myFrame's properties here.
         
@@ -20,7 +32,6 @@ public class LangWars_Demo2
 
         System.out.println("New Player : " + player);
         System.out.println("Computer   : " + computer);
-
         
     }
 }
