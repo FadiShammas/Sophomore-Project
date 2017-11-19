@@ -19,6 +19,12 @@ public class Card {
         this.desc = desc;
         this.cost = cost;
     }
+
+    public Card(String name, int cost) {         //Constructor for testing purposes
+        this.cost = cost;
+    }
+    
+    
     
         public String getName() {
         return name;
@@ -43,4 +49,9 @@ public class Card {
     public void setCost(int cost) {
         this.cost = cost;
     }
+    
+    public void setInhand(int inhand) {}
+    public void setExhausted(int exhausted){}
+    
+    
 }

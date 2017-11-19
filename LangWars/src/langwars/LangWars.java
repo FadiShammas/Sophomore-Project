@@ -4,36 +4,24 @@
 
 package langwars;
 
-import javafx.application.Application;
-import static javafx.application.Application.launch;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import langwars.Board;
 
-public class LangWars extends Application
-{
-    @Override
 
-    public void start(Stage primaryStage)
+public class LangWars
     {
-        LangWarsPane pane = new LangWarsPane();
-        Scene scene = new Scene(pane, 1280, 800);
-        pane.setAlignment(Pos.CENTER);
-        pane.setStyle("-fx-background-color: white");
-        primaryStage.setTitle("LANG.WARS");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-       
-    public static void main(String[] args) 
-    {
+    private static Board myFrame;
 
+    public static void main(String[] args)
+    {
+        myFrame = new Board();
+        //you can edit myFrame's properties here.
+        
         LangWarsPlayer player = new LangWarsPlayer(30,10,"New Player");
         LangWarsPlayer computer = new LangWarsPlayer(30,10,"Computer");
 
         System.out.println("New Player : " + player);
         System.out.println("Computer   : " + computer);
+
         
-        launch(args);
-    }    
+    }
 }
