@@ -61,6 +61,15 @@ public class Board extends JFrame {
     public ImageIcon ii;
 
     public static void main(String[] args) {
+
+        try
+        {
+        Thread.sleep(4500);    
+        } 
+        catch(Exception e)
+        {
+        }
+        
         new Board();
 
     }
