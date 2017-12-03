@@ -17,6 +17,8 @@ public class Board extends JFrame {
     public static int gameState = 1;
     public static Creature[] hand = new Creature[2];
     public static Creature[] field = new Creature[7];
+    public static Creature[] enemyHand = new Creature[2];
+    public static Creature[] enemyField = new Creature[7];
     public static Creature css = new Creature("CSS", 2, 6, 2, 2);
     public int health = 10;
     public int enemyHealth = 10;
@@ -56,6 +58,7 @@ public class Board extends JFrame {
     public JLabel cards27 = new JLabel();
     public static JLabel mana = new JLabel();
     public static JLabel enemyHP = new JLabel();
+    public static JLabel enemyM = new JLabel();
 
     public JLabel card = new JLabel();
     public ImageIcon ii;
@@ -91,11 +94,34 @@ public class Board extends JFrame {
                                 field[i].setExhausted(0);
                             }
                             gameState = 100;
+
                             if (userMana < 10) {
                                 userMana++;
                             }
                             userCMana = userMana;
                             mana.setText("Mana: " + String.valueOf(userCMana) + "/" + String.valueOf(userMana));
+
+                            //Computer Mana
+                            if (enemyMana < 10) {
+                                enemyMana++;
+                            }
+                            enemyCMana = enemyMana;
+                            enemyM.setText("Mana: " + String.valueOf(userCMana) + "/" + String.valueOf(userMana));
+
+                            //Computer Logic Goes Here
+
+                            for (int i = 0; i < 7; i++) {
+                                field[i] = new Creature("blank", 0, 0, 0, 0);
+                            }
+
+                            hand[0] = new Creature("PHP", 1, 4, 4, 5);
+                            hand[1] = new Creature("HTML", 1, 6, 3, 4);
+                            Creature css = new Creature("CSS", 2, 6, 2, 2);
+                            cards.setIcon(getImageIcon(new File("images/PHP.png")));
+                            cards.setVisible(true);
+                            cards1.setIcon(getImageIcon(new File("images/HTML.png")));
+                            cards1.setVisible(true);
+
                         }
                         else
                             frame.dispose();
@@ -131,7 +157,7 @@ public class Board extends JFrame {
                 frame.add(mana);
 
                 //Enemy
-                JLabel enemyM = new JLabel();
+                //JLabel enemyM = new JLabel();
                 enemyM.setText("Mana: " + String.valueOf(enemyMana) + "/" + String.valueOf(enemyCMana));
                 enemyM.setBounds(865, 40, 300, 70);
                 enemyM.setFont(new Font("Algerian", Font.PLAIN, 40));

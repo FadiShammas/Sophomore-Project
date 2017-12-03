@@ -1168,17 +1168,7 @@ public class Board extends JFrame {
                 if (mouseRead == true) {
                     clickPos = 100;
                 }
-                if (gameState != 4) {
-                    System.out.println("work");
-                    for (int i = 0; i < 7; i++) {
-                        field[i].setExhausted(0);
-                    }
-                    if (userMana < 10) {
-                        userMana++;
-                    }
-                    userCMana = userMana;
-                    mana.setText("Mana: " + String.valueOf(userCMana) + "/" + String.valueOf(userMana));
-                }
+                
                     
             }
         }
