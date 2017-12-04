@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.util.Random;
 
 public class Board extends JFrame {
 //playminion(hand, pos) method
@@ -16,7 +17,8 @@ public class Board extends JFrame {
     public static int clickPos = 0;
     public static Boolean endturn = false;
     public static int gameState = 1;
-    public static Creature[] hand = new Creature[2];
+    public static Creature[] deck = new Creature[9];
+    public static Creature[] hand = new Creature[7];
     public static Creature[] field = new Creature[7];
     public static Creature css = new Creature("CSS", 2, 0, 6, 2, 2);
     public static Creature[] eHand = new Creature[7];
@@ -61,10 +63,23 @@ public class Board extends JFrame {
     public static JLabel mana = new JLabel();
     public static JLabel enemyHP = new JLabel();
     public static JLabel enemyM = new JLabel();
-
     public JLabel card = new JLabel();
     public ImageIcon ii;
-
+    public String playerHandCard1;
+    public String playerHandCard2;
+    public String playerHandCard3;
+    public String playerHandCard4;
+    public String playerHandCard5;
+    public String playerHandCard6;
+    public String playerHandCard7;
+    public String enemyHandCard1;
+    public String enemyHandCard2;
+    public String enemyHandCard3;
+    public String enemyHandCard4;
+    public String enemyHandCard5;
+    public String enemyHandCard6;
+    public String enemyHandCard7;
+    
     public static void main(String[] args) 
     {
 
@@ -105,16 +120,33 @@ public class Board extends JFrame {
 
                         System.out.println("User Clicked on End Turn Button");
 
-                        if (gameState != 4) {
+                        if (gameState != 99) {
                             for (int i = 0; i < 7; i++) {
                                 field[i].setExhausted(0);
                             }
+
                             gameState = 100;
+                                                        
+                            //Player Mana
                             if (userMana < 10) {
                                 userMana++;
                             }
                             userCMana = userMana;
                             mana.setText("Mana: " + String.valueOf(userCMana) + "/" + String.valueOf(userMana));
+                            
+                            //Player Card Draw                            
+                            if (turnCount == 0) {
+                                cards1.setVisible(true);}
+                            else if (turnCount == 1) {
+                                cards2.setVisible(true);}
+                            else if (turnCount == 2) {
+                                cards3.setVisible(true);}
+                            else if (turnCount == 3) {
+                                cards4.setVisible(true);}
+                            else if (turnCount == 4) {
+                                cards5.setVisible(true);}
+                            else if (turnCount == 5) {
+                                cards6.setVisible(true);}
                             
                             //Computer Mana
                             if (enemyMana < 10) {
@@ -122,9 +154,44 @@ public class Board extends JFrame {
                             }
                             enemyCMana = enemyMana;
                             enemyM.setText("Mana: " + String.valueOf(enemyCMana) + "/" + String.valueOf(enemyMana));
+                            
+                            if (cards7.isVisible()) {
+                                if (enemyCMana > eHand[0].getCost()) {
+                                    enemyPlayMinion(1, 1, eHand[0].getMechanic(), "images/" + eHand[0].getName() + "_" + eHand[0].getHp() + ".png");}
+                            }
 
-                            //Computer Logic Goes Here
+                            if (cards8.isVisible()) {
+                                if (enemyCMana > eHand[1].getCost()) {
+                                    enemyPlayMinion(2, 2, eHand[1].getMechanic(), "images/" + eHand[1].getName() + "_" + eHand[1].getHp() + ".png");}
+                            }
+                            
+                            if (cards9.isVisible()) {
+                                if (enemyCMana > eHand[2].getCost()) {
+                                    enemyPlayMinion(3, 3, eHand[2].getMechanic(), "images/" + eHand[2].getName() + "_" + eHand[2].getHp() + ".png");}
+                            }
+
+                            if (cards10.isVisible()) {
+                                if (enemyCMana > eHand[3].getCost()) {
+                                    enemyPlayMinion(4, 4, eHand[3].getMechanic(), "images/" + eHand[3].getName() + "_" + eHand[3].getHp() + ".png");}
+                            }
+
+                            if (cards11.isVisible()) {
+                                if (enemyCMana > eHand[4].getCost()) {
+                                    enemyPlayMinion(5, 5, eHand[4].getMechanic(), "images/" + eHand[4].getName() + "_" + eHand[4].getHp() + ".png");}
+                            }
+
+                            if (cards12.isVisible()) {
+                                if (enemyCMana > eHand[5].getCost()) {
+                                    enemyPlayMinion(6, 6, eHand[5].getMechanic(), "images/" + eHand[5].getName() + "_" + eHand[5].getHp() + ".png");}
+                            }
+
+                            if (cards13.isVisible()) {
+                                if (enemyCMana > eHand[6].getCost()) {
+                                    enemyPlayMinion(7, 7, eHand[6].getMechanic(), "images/" + eHand[6].getName() + "_" + eHand[6].getHp() + ".png");}
+                            }
                                                         
+                            
+                            //Computer Card Draw                                                        
                             if (turnCount == 0) {
                                 cards7.setVisible(true);}
                             else if (turnCount == 1) {
@@ -139,47 +206,12 @@ public class Board extends JFrame {
                                 cards12.setVisible(true);}
                             else if (turnCount == 6) {
                                 cards13.setVisible(true);}
-                            
+                                                        
                             turnCount++;
                             
-                            //enemyPlayMinion(int handpos, int boardpos, int mechanic, String file                            
-
-                            if (cards7.isVisible()) {
-                                if (enemyCMana > 7) {
-                                    enemyPlayMinion(1, 1, eHand[0].getMechanic(), "images/java_2.png");}
-                            }
-
-                            if (cards8.isVisible()) {
-                                if (enemyCMana > 7) {
-                                    enemyPlayMinion(2, 2, eHand[1].getMechanic(), "images/python_4.png");}
-                            }
-                            
-                            if (cards9.isVisible()) {
-                                if (enemyCMana > 4) {
-                                    enemyPlayMinion(3, 3, eHand[2].getMechanic(), "images/ruby_4.png");}
-                            }
-
-                            if (cards10.isVisible()) {
-                                if (enemyCMana > 6) {
-                                    enemyPlayMinion(4, 4, eHand[3].getMechanic(), "images/sql_4.png");}
-                            }
-
-                            if (cards11.isVisible()) {
-                                if (enemyCMana > 4) {
-                                    enemyPlayMinion(5, 5, eHand[4].getMechanic(), "images/php_5.png");}
-                            }
-
-                            if (cards12.isVisible()) {
-                                if (enemyCMana > 5) {
-                                    enemyPlayMinion(6, 6, eHand[5].getMechanic(), "images/swift_4.png");}
-                            }
-
-                            if (cards13.isVisible()) {
-                                if (enemyCMana > 7) {
-                                    enemyPlayMinion(7, 7, eHand[6].getMechanic(), "images/c++_4.png");}
-                            }
-                                                                                   
                         } else {
+
+                            //Game End                            
                             frame.dispose();
                         }
                     }
@@ -192,31 +224,31 @@ public class Board extends JFrame {
                 //User
                 JLabel hp = new JLabel();
                 hp.setText("HP: " + String.valueOf(health));
-                hp.setBounds(930, 685, 150, 50);
-                hp.setFont(new Font("Algerian", Font.PLAIN, 40));
-                hp.setForeground(Color.red);
+                hp.setBounds(900, 685, 150, 50);
+                hp.setFont(new Font("Courier New", Font.BOLD, 40));
+                hp.setForeground(Color.green);
                 frame.add(hp);
 
                 //Enemy
                 enemyHP.setText("HP: " + String.valueOf(enemyHealth));
-                enemyHP.setBounds(930, 5, 150, 50);
-                enemyHP.setFont(new Font("Algerian", Font.PLAIN, 40));
-                enemyHP.setForeground(Color.red);
+                enemyHP.setBounds(900, 5, 150, 50);
+                enemyHP.setFont(new Font("Courier New", Font.BOLD, 40));
+                enemyHP.setForeground(Color.green);
                 frame.add(enemyHP);
 
                 //Mana
                 //User
                 mana.setText("Mana: " + String.valueOf(userCMana) + "/" + String.valueOf(userMana));
-                mana.setBounds(865, 735, 300, 70);
-                mana.setFont(new Font("Algerian", Font.PLAIN, 40));
+                mana.setBounds(875, 735, 300, 70);
+                mana.setFont(new Font("Courier New", Font.BOLD, 40));
                 mana.setForeground(Color.blue);
                 frame.add(mana);
 
                 //Enemy
                 //JLabel enemyM = new JLabel();
                 enemyM.setText("Mana: " + String.valueOf(enemyMana) + "/" + String.valueOf(enemyCMana));
-                enemyM.setBounds(865, 40, 300, 70);
-                enemyM.setFont(new Font("Algerian", Font.PLAIN, 40));
+                enemyM.setBounds(875, 40, 300, 70);
+                enemyM.setFont(new Font("Courier New", Font.BOLD, 40));
                 enemyM.setForeground(Color.blue);
                 frame.add(enemyM);
 
@@ -332,44 +364,128 @@ public class Board extends JFrame {
 
             public void runGame() {
 
-                gameState = 100; //100 = beginning of turn, card = card selected, 0 = end
+                //Game State Definions
+                //100 = Beginning of Turn
+                //Card # = Card Selected
+                //0 = End of Turn
+                //99 = End of Game
+                
+                gameState = 100;
+                
+                //Deck
+                //String name, int state, int mechanic, int cost, int atk, int hp
+                deck[0] = new Creature("c#", 1, 0, 7, 3, 3); 
+                deck[1] = new Creature("c++", 1, 0, 6, 4, 8);
+                deck[2] = new Creature("html", 1, 0, 6, 3, 4);
+                deck[3] = new Creature("swift", 1, 0, 5, 4, 4);
+                deck[4] = new Creature("java", 1, 0, 7, 10, 2);
+                deck[5] = new Creature("php", 1, 0, 4, 4, 5);
+                deck[6] = new Creature("python", 1, 0, 7, 3, 4);
+                deck[7] = new Creature("ruby", 1, 0, 4, 3, 4);
+                deck[8] = new Creature("sql", 1, 0, 6, 6, 4);
+
+                Creature css = new Creature("CSS", 2, 0, 6, 2, 2);
+                
+                //Player Hand
                 for (int i = 0; i < 7; i++) {
                     field[i] = new Creature("blank", 0, 0, 0, 0, 0);
                 }
-                hand[0] = new Creature("PHP", 1, 0, 4, 4, 5);
-                hand[1] = new Creature("HTML", 1, 1, 6, 3, 4);
-                Creature css = new Creature("CSS", 2, 0, 6, 2, 2);
-                cards.setIcon(getImageIcon(new File("images/php_5.png")));
+//                hand[0] = new Creature("PHP", 1, 0, 4, 4, 5);
+//                hand[1] = new Creature("HTML", 1, 1, 6, 3, 4);
+
+                Random generator = new Random();
+                hand[0] = (deck[new Random().nextInt(deck.length)]);
+                hand[1] = (deck[new Random().nextInt(deck.length)]);
+                hand[2] = (deck[new Random().nextInt(deck.length)]);
+                hand[3] = (deck[new Random().nextInt(deck.length)]);
+                hand[4] = (deck[new Random().nextInt(deck.length)]);
+                hand[5] = (deck[new Random().nextInt(deck.length)]);
+                hand[6] = (deck[new Random().nextInt(deck.length)]);
+           
+                playerHandCard1 = ("images/" + hand[0].getName() + "_" + hand[0].getHp() + ".png");
+                playerHandCard2 = ("images/" + hand[1].getName() + "_" + hand[1].getHp() + ".png");
+                playerHandCard3 = ("images/" + hand[2].getName() + "_" + hand[2].getHp() + ".png");
+                playerHandCard4 = ("images/" + hand[3].getName() + "_" + hand[3].getHp() + ".png");
+                playerHandCard5 = ("images/" + hand[4].getName() + "_" + hand[4].getHp() + ".png");
+                playerHandCard6 = ("images/" + hand[5].getName() + "_" + hand[5].getHp() + ".png");
+                playerHandCard7 = ("images/" + hand[6].getName() + "_" + hand[6].getHp() + ".png");
+
+                cards.setIcon(getImageIcon(new File(playerHandCard1)));
                 cards.setVisible(true);
-                cards1.setIcon(getImageIcon(new File("images/html_4.png")));
-                cards1.setVisible(true);
-                
+                cards1.setIcon(getImageIcon(new File(playerHandCard2)));
+                cards1.setVisible(false);
+                cards2.setIcon(getImageIcon(new File(playerHandCard3)));
+                cards2.setVisible(false);
+                cards3.setIcon(getImageIcon(new File(playerHandCard4)));
+                cards3.setVisible(false);
+                cards4.setIcon(getImageIcon(new File(playerHandCard5)));
+                cards4.setVisible(false);
+                cards5.setIcon(getImageIcon(new File(playerHandCard6)));
+                cards5.setVisible(false);
+                cards6.setIcon(getImageIcon(new File(playerHandCard7)));
+                cards6.setVisible(false);
+
+//                cards1.setIcon(getImageIcon(new File("images/html_4.png")));
+//                cards1.setVisible(true);
+
+                //Enemy Hand                
                 for (int i = 0; i < 7; i++) {
                     eField[i] = new Creature("blank", 0, 0, 0, 0, 0);
                 }                
                 
-                //(String name, int state, int mechanic, int cost, int atk, int hp)
-                eHand[0] = new Creature("Java", 1, 0, 7, 10, 2);
-                eHand[1] = new Creature("Python", 1, 0, 7, 3, 4);
-                eHand[2] = new Creature("Ruby", 1, 0, 4, 3, 4);
-                eHand[3] = new Creature("SQL", 1, 0, 6, 6, 4);
-                eHand[4] = new Creature("PHP", 1, 0, 4, 4, 5);
-                eHand[5] = new Creature("Swift", 1, 0, 5, 4, 4);
-                eHand[6] = new Creature("C++", 1, 0, 7, 4, 4);
-                cards7.setIcon(getImageIcon(new File("images/java_2.png")));
+                eHand[0] = (deck[new Random().nextInt(deck.length)]);
+                eHand[1] = (deck[new Random().nextInt(deck.length)]);
+                eHand[2] = (deck[new Random().nextInt(deck.length)]);
+                eHand[3] = (deck[new Random().nextInt(deck.length)]);
+                eHand[4] = (deck[new Random().nextInt(deck.length)]);
+                eHand[5] = (deck[new Random().nextInt(deck.length)]);
+                eHand[6] = (deck[new Random().nextInt(deck.length)]);
+           
+                enemyHandCard1 = ("images/" + eHand[0].getName() + "_" + eHand[0].getHp() + ".png");
+                enemyHandCard2 = ("images/" + eHand[1].getName() + "_" + eHand[1].getHp() + ".png");
+                enemyHandCard3 = ("images/" + eHand[2].getName() + "_" + eHand[2].getHp() + ".png");
+                enemyHandCard4 = ("images/" + eHand[3].getName() + "_" + eHand[3].getHp() + ".png");
+                enemyHandCard5 = ("images/" + eHand[4].getName() + "_" + eHand[4].getHp() + ".png");
+                enemyHandCard6 = ("images/" + eHand[5].getName() + "_" + eHand[5].getHp() + ".png");
+                enemyHandCard7 = ("images/" + eHand[6].getName() + "_" + eHand[6].getHp() + ".png");
+
+                cards7.setIcon(getImageIcon(new File(enemyHandCard1)));
                 cards7.setVisible(false);
-                cards8.setIcon(getImageIcon(new File("images/python_4.png")));
+                cards8.setIcon(getImageIcon(new File(enemyHandCard2)));
                 cards8.setVisible(false);
-                cards9.setIcon(getImageIcon(new File("images/ruby_4.png")));
+                cards9.setIcon(getImageIcon(new File(enemyHandCard3)));
                 cards9.setVisible(false);
-                cards10.setIcon(getImageIcon(new File("images/sql_4.png")));
+                cards10.setIcon(getImageIcon(new File(enemyHandCard4)));
                 cards10.setVisible(false);
-                cards11.setIcon(getImageIcon(new File("images/php_5.png")));
+                cards11.setIcon(getImageIcon(new File(enemyHandCard5)));
                 cards11.setVisible(false);
-                cards12.setIcon(getImageIcon(new File("images/swift_4.png")));
+                cards12.setIcon(getImageIcon(new File(enemyHandCard6)));
                 cards12.setVisible(false);
-                cards13.setIcon(getImageIcon(new File("images/c++_4.png")));
+                cards13.setIcon(getImageIcon(new File(enemyHandCard7)));
                 cards13.setVisible(false);
+
+                //(String name, int state, int mechanic, int cost, int atk, int hp)
+//                eHand[0] = new Creature("Java", 1, 0, 7, 10, 2);
+//                eHand[1] = new Creature("Python", 1, 0, 7, 3, 4);
+//                eHand[2] = new Creature("Ruby", 1, 0, 4, 3, 4);
+//                eHand[3] = new Creature("SQL", 1, 0, 6, 6, 4);
+//                eHand[4] = new Creature("PHP", 1, 0, 4, 4, 5);
+//                eHand[5] = new Creature("Swift", 1, 0, 5, 4, 4);
+//                eHand[6] = new Creature("C++", 1, 0, 7, 4, 4);
+//                cards7.setIcon(getImageIcon(new File("images/java_2.png")));
+//                cards7.setVisible(false);
+//                cards8.setIcon(getImageIcon(new File("images/python_4.png")));
+//                cards8.setVisible(false);
+//                cards9.setIcon(getImageIcon(new File("images/ruby_4.png")));
+//                cards9.setVisible(false);
+//                cards10.setIcon(getImageIcon(new File("images/sql_4.png")));
+//                cards10.setVisible(false);
+//                cards11.setIcon(getImageIcon(new File("images/php_5.png")));
+//                cards11.setVisible(false);
+//                cards12.setIcon(getImageIcon(new File("images/swift_4.png")));
+//                cards12.setVisible(false);
+//                cards13.setIcon(getImageIcon(new File("images/c++_4.png")));
+//                cards13.setVisible(false);
             }
             
             public void loadBoard() {
@@ -477,7 +593,7 @@ public class Board extends JFrame {
                 field[boardpos - 1].setAtk(hand[handpos - 1].getAtk());
                 field[boardpos - 1].setHp(hand[handpos - 1].getHp());
                 field[boardpos - 1].setState(2);
-                enemyCMana -= hand[0].getCost();
+                userCMana -= hand[handpos -1].getCost();
                 hand[handpos - 1].setState(0);
                 field[boardpos - 1].setExhausted(1);
                 switch (handpos) {
@@ -640,7 +756,7 @@ public class Board extends JFrame {
         }
         
         public void mouseClicked(MouseEvent e) {
-            System.out.println("\nGame State: " + gameState);
+//            System.out.println("\nGame State: " + gameState);
             
             //Enemy Cards from left to right
             if (x > 1 && x < 78 && y > 0 && y < 180) {
@@ -714,8 +830,9 @@ public class Board extends JFrame {
                     clickPos = 1;
                 }
                 if (gameState == 100) {
-                    if (hand[0].getState() == 1 && userCMana >= hand[0].getCost()) {
+                    if (cards.isVisible() && userCMana >= hand[0].getCost()) {
                         gameState = 1;
+                        System.out.println("\nGame State: " + gameState);
                     }
                 }
 
@@ -725,8 +842,9 @@ public class Board extends JFrame {
                     clickPos = 2;
                 }
                 if (gameState == 100) {
-                    if (hand[1].getState() == 1 && userCMana >= hand[1].getCost()) {
+                    if (cards1.isVisible() && userCMana >= hand[1].getCost()) {
                         gameState = 2;
+                        System.out.println("\nGame State: " + gameState);
                     }
                 }
 
@@ -735,132 +853,242 @@ public class Board extends JFrame {
                 if (mouseRead == true) {
                     clickPos = 3;
                 }
+                if (gameState == 100) {
+                    if (cards2.isVisible() && userCMana >= hand[2].getCost()) {
+                        gameState = 3;
+                        System.out.println("\nGame State: " + gameState);
+                    }
+                }
             }
             if (x > 399 && x < 477 && y > 720 && y < 853) { //hand 4
                 if (mouseRead == true) {
                     clickPos = 4;
                 }
+                if (gameState == 100) {
+                    if (cards3.isVisible() && userCMana >= hand[3].getCost()) {
+                        gameState = 4;
+                        System.out.println("\nGame State: " + gameState);
+                    }
+                }    
             }
             if (x > 487 && x < 565 && y > 720 && y < 853) { //hand 5
                 if (mouseRead == true) {
                     clickPos = 5;
                 }
+                if (gameState == 100) {
+                    if (cards4.isVisible() && userCMana >= hand[4].getCost()) {
+                        gameState = 5;
+                        System.out.println("\nGame State: " + gameState);
+                    }
+                }    
             }
             if (x > 575 && x < 653 && y > 720 && y < 853) { //hand 6
                 if (mouseRead == true) {
                     clickPos = 6;
+                }
+                if (gameState == 100) {
+                    if (cards5.isVisible() && userCMana >= hand[5].getCost()) {
+                        gameState = 6;
+                        System.out.println("\nGame State: " + gameState);
+                    }
                 }
             }
             if (x > 663 && x < 741 && y > 720 && y < 853) { //hand 7
                 if (mouseRead == true) {
                     clickPos = 7;
                 }
+                if (gameState == 100) {
+                    if (cards6.isVisible() && userCMana >= hand[6].getCost()) {
+                        gameState = 7;
+                        System.out.println("\nGame State: " + gameState);
+                    }
+                }    
             }
-
+            
             //User Playables from left to right
-            if (x > 306 && x < 384 && y > 500 && y < 633) { //space 1
-                System.out.println("Space 1");
+//            if (x > 306 && x < 384 && y > 500 && y < 633) { //space 1
+           if (x > 215 && x < 300 && y > 465 && y < 600) { //space 1
+               System.out.println("Space 1");
+                
                 if (mouseRead == true) {
                     clickPos = 11;
                 }
                 if (gameState == 1) {
-                    playMinion(1, 1, hand[0].getMechanic(), "images/php_5.png");
+                    playMinion(1, 1, hand[0].getMechanic(), "images/" + hand[0].getName() + "_" + hand[0].getHp() + ".png");
                 } else if (gameState == 2) {
-                    playMinion(2, 1, hand[1].getMechanic(), "images/html_4.png");
+                    playMinion(2, 1, hand[1].getMechanic(), "images/" + hand[1].getName() + "_" + hand[1].getHp() + ".png");
+                } else if (gameState == 3) {
+                    playMinion(3, 1, hand[2].getMechanic(), "images/" + hand[2].getName() + "_" + hand[2].getHp() + ".png");
+                } else if (gameState == 4) {
+                    playMinion(4, 1, hand[3].getMechanic(), "images/" + hand[3].getName() + "_" + hand[3].getHp() + ".png");
+                } else if (gameState == 5) {
+                    playMinion(5, 1, hand[4].getMechanic(), "images/" + hand[4].getName() + "_" + hand[4].getHp() + ".png");
+                } else if (gameState == 6) {
+                    playMinion(6, 1, hand[5].getMechanic(), "images/" + hand[5].getName() + "_" + hand[5].getHp() + ".png");
+                } else if (gameState == 7) {
+                    playMinion(7, 1, hand[6].getMechanic(), "images/" + hand[6].getName() + "_" + hand[6].getHp() + ".png");
                 } else if (gameState == 100) {
                     if (field[0].getState() == 2 && field[0].getExhausted() == 0) {
                         gameState = 11;
                     }
                 }
-
             }
-            if (x > 394 && x < 472 && y > 500 && y < 633) { //space 2
+            
+//            if (x > 394 && x < 472 && y > 500 && y < 633) { //space 2
+            if (x > 335 && x < 420 && y > 465 && y < 600) { //space 2
                 System.out.println("Space 2");
                 if (mouseRead == true) {
                     clickPos = 12;
                 }
                 if (gameState == 1) {
-                    playMinion(1, 2, hand[0].getMechanic(), "images/php_5.png");
+                    playMinion(1, 2, hand[0].getMechanic(), "images/" + hand[0].getName() + "_" + hand[0].getHp() + ".png");
                 } else if (gameState == 2) {
-                    playMinion(2, 2, hand[1].getMechanic(), "images/html_4.png");
+                    playMinion(2, 2, hand[1].getMechanic(), "images/" + hand[1].getName() + "_" + hand[1].getHp() + ".png");
+                } else if (gameState == 3) {
+                    playMinion(3, 2, hand[2].getMechanic(), "images/" + hand[2].getName() + "_" + hand[2].getHp() + ".png");
+                } else if (gameState == 4) {
+                    playMinion(4, 2, hand[3].getMechanic(), "images/" + hand[3].getName() + "_" + hand[3].getHp() + ".png");
+                } else if (gameState == 5) {
+                    playMinion(5, 2, hand[4].getMechanic(), "images/" + hand[4].getName() + "_" + hand[4].getHp() + ".png");
+                } else if (gameState == 6) {
+                    playMinion(6, 2, hand[5].getMechanic(), "images/" + hand[5].getName() + "_" + hand[5].getHp() + ".png");
+                } else if (gameState == 7) {
+                    playMinion(7, 2, hand[6].getMechanic(), "images/" + hand[6].getName() + "_" + hand[6].getHp() + ".png");
                 } else if (gameState == 100) {
-                    if (field[1].getState() == 2 && field[1].getExhausted() == 0) {
+                    if (field[0].getState() == 2 && field[0].getExhausted() == 0) {
                         gameState = 12;
                     }
                 }
             }
-            if (x > 482 && x < 560 && y > 500 && y < 633) { //space 3
+//            if (x > 482 && x < 560 && y > 500 && y < 633) { //space 3
+            if (x >= 455 && x <= 540 && y >= 465 && y <= 600) { //space 3
                 System.out.println("Space 3");
                 if (mouseRead == true) {
                     clickPos = 13;
                 }
                 if (gameState == 1) {
-                    playMinion(1, 3, hand[0].getMechanic(), "images/php_5.png");
+                    playMinion(1, 3, hand[0].getMechanic(), "images/" + hand[0].getName() + "_" + hand[0].getHp() + ".png");
                 } else if (gameState == 2) {
-                    playMinion(2, 3, hand[1].getMechanic(), "images/html_4.png");
+                    playMinion(2, 3, hand[1].getMechanic(), "images/" + hand[1].getName() + "_" + hand[1].getHp() + ".png");
+                } else if (gameState == 3) {
+                    playMinion(3, 3, hand[2].getMechanic(), "images/" + hand[2].getName() + "_" + hand[2].getHp() + ".png");
+                } else if (gameState == 4) {
+                    playMinion(4, 3, hand[3].getMechanic(), "images/" + hand[3].getName() + "_" + hand[3].getHp() + ".png");
+                } else if (gameState == 5) {
+                    playMinion(5, 3, hand[4].getMechanic(), "images/" + hand[4].getName() + "_" + hand[4].getHp() + ".png");
+                } else if (gameState == 6) {
+                    playMinion(6, 3, hand[5].getMechanic(), "images/" + hand[5].getName() + "_" + hand[5].getHp() + ".png");
+                } else if (gameState == 7) {
+                    playMinion(7, 3, hand[6].getMechanic(), "images/" + hand[6].getName() + "_" + hand[6].getHp() + ".png");
                 } else if (gameState == 100) {
-                    if (field[2].getState() == 2 && field[2].getExhausted() == 0) {
+                    if (field[0].getState() == 2 && field[0].getExhausted() == 0) {
                         gameState = 13;
                     }
                 }
             }
-            if (x > 570 && x < 648 && y > 500 && y < 633) { //space 4
+//            if (x > 570 && x < 648 && y > 500 && y < 633) { //space 4
+            if (x >= 573 && x <= 660 && y >= 465 && y <= 600) { //space 4
                 System.out.println("Space 4");
                 if (mouseRead == true) {
                     clickPos = 14;
                 }
-                if (gameState == 1) {
-                    playMinion(1, 4, hand[0].getMechanic(), "images/php_5.png");
+                 if (gameState == 1) {
+                    playMinion(1, 4, hand[0].getMechanic(), "images/" + hand[0].getName() + "_" + hand[0].getHp() + ".png");
                 } else if (gameState == 2) {
-                    playMinion(2, 4, hand[1].getMechanic(), "images/html_4.png");
+                    playMinion(2, 4, hand[1].getMechanic(), "images/" + hand[1].getName() + "_" + hand[1].getHp() + ".png");
+                } else if (gameState == 3) {
+                    playMinion(3, 4, hand[2].getMechanic(), "images/" + hand[2].getName() + "_" + hand[2].getHp() + ".png");
+                } else if (gameState == 4) {
+                    playMinion(4, 4, hand[3].getMechanic(), "images/" + hand[3].getName() + "_" + hand[3].getHp() + ".png");
+                } else if (gameState == 5) {
+                    playMinion(5, 4, hand[4].getMechanic(), "images/" + hand[4].getName() + "_" + hand[4].getHp() + ".png");
+                } else if (gameState == 6) {
+                    playMinion(6, 4, hand[5].getMechanic(), "images/" + hand[5].getName() + "_" + hand[5].getHp() + ".png");
+                } else if (gameState == 7) {
+                    playMinion(7, 4, hand[6].getMechanic(), "images/" + hand[6].getName() + "_" + hand[6].getHp() + ".png");
                 } else if (gameState == 100) {
-                    System.out.println(field[3].getState());
-                    if (field[3].getState() == 2 && field[3].getExhausted() == 0) {
+                    if (field[0].getState() == 2 && field[0].getExhausted() == 0) {
                         gameState = 14;
                     }
                 }
             }
-            if (x > 658 && x < 736 && y > 500 && y < 633) { //space 5
+
+//            if (x > 658 && x < 736 && y > 500 && y < 633) { //space 5
+            if (x > 693 && x < 779 && y > 465 && y < 600) { //space 5
                 System.out.println("Space 5");
                 if (mouseRead == true) {
                     clickPos = 15;
                 }
-                if (gameState == 1) {
-                    playMinion(1, 5, hand[0].getMechanic(), "images/php_5.png");
+                 if (gameState == 1) {
+                    playMinion(1, 5, hand[0].getMechanic(), "images/" + hand[0].getName() + "_" + hand[0].getHp() + ".png");
                 } else if (gameState == 2) {
-                    playMinion(2, 5, hand[1].getMechanic(), "images/html_4.png");
+                    playMinion(2, 5, hand[1].getMechanic(), "images/" + hand[1].getName() + "_" + hand[1].getHp() + ".png");
+                } else if (gameState == 3) {
+                    playMinion(3, 5, hand[2].getMechanic(), "images/" + hand[2].getName() + "_" + hand[2].getHp() + ".png");
+                } else if (gameState == 4) {
+                    playMinion(4, 5, hand[3].getMechanic(), "images/" + hand[3].getName() + "_" + hand[3].getHp() + ".png");
+                } else if (gameState == 5) {
+                    playMinion(5, 5, hand[4].getMechanic(), "images/" + hand[4].getName() + "_" + hand[4].getHp() + ".png");
+                } else if (gameState == 6) {
+                    playMinion(6, 5, hand[5].getMechanic(), "images/" + hand[5].getName() + "_" + hand[5].getHp() + ".png");
+                } else if (gameState == 7) {
+                    playMinion(7, 5, hand[6].getMechanic(), "images/" + hand[6].getName() + "_" + hand[6].getHp() + ".png");
                 } else if (gameState == 100) {
-                    if (field[4].getState() == 2 && field[4].getExhausted() == 0) {
+                    if (field[0].getState() == 2 && field[0].getExhausted() == 0) {
                         gameState = 15;
                     }
                 }
             }
-            if (x > 746 && x < 824 && y > 500 && y < 633) { //space 6
+
+//            if (x > 746 && x < 824 && y > 500 && y < 633) { //space 6
+            if (x > 812 && x < 899 && y > 465 && y < 600) { //space 6
                 System.out.println("Space 6");
                 if (mouseRead == true) {
                     clickPos = 16;
                 }
-                if (gameState == 1) {
-                    playMinion(1, 6, hand[0].getMechanic(), "images/php_5.png");
+                 if (gameState == 1) {
+                    playMinion(1, 6, hand[0].getMechanic(), "images/" + hand[0].getName() + "_" + hand[0].getHp() + ".png");
                 } else if (gameState == 2) {
-                    playMinion(2, 1, hand[1].getMechanic(), "images/html_4.png");
+                    playMinion(2, 6, hand[1].getMechanic(), "images/" + hand[1].getName() + "_" + hand[1].getHp() + ".png");
+                } else if (gameState == 3) {
+                    playMinion(3, 6, hand[2].getMechanic(), "images/" + hand[2].getName() + "_" + hand[2].getHp() + ".png");
+                } else if (gameState == 4) {
+                    playMinion(4, 6, hand[3].getMechanic(), "images/" + hand[3].getName() + "_" + hand[3].getHp() + ".png");
+                } else if (gameState == 5) {
+                    playMinion(5, 6, hand[4].getMechanic(), "images/" + hand[4].getName() + "_" + hand[4].getHp() + ".png");
+                } else if (gameState == 6) {
+                    playMinion(6, 6, hand[5].getMechanic(), "images/" + hand[5].getName() + "_" + hand[5].getHp() + ".png");
+                } else if (gameState == 7) {
+                    playMinion(7, 6, hand[6].getMechanic(), "images/" + hand[6].getName() + "_" + hand[6].getHp() + ".png");
                 } else if (gameState == 100) {
-                    if (field[5].getState() == 2 && field[5].getExhausted() == 0) {
+                    if (field[0].getState() == 2 && field[0].getExhausted() == 0) {
                         gameState = 16;
                     }
                 }
             }
-            if (x > 834 && x < 912 && y > 500 && y < 633) { //space 7
+            
+//            if (x > 834 && x < 912 && y > 500 && y < 633) { //space 7
+            if (x > 931 && x < 1017 && y > 465 && y < 600) { //space 7
                 System.out.println("Space 7");
                 if (mouseRead == true) {
                     clickPos = 17;
                 }
-                if (gameState == 1) {
-                    playMinion(1, 7, hand[0].getMechanic(), "images/php_5.png");
+                 if (gameState == 1) {
+                    playMinion(1, 7, hand[0].getMechanic(), "images/" + hand[0].getName() + "_" + hand[0].getHp() + ".png");
                 } else if (gameState == 2) {
-                    playMinion(2, 7, hand[1].getMechanic(), "images/html_4.png");
+                    playMinion(2, 7, hand[1].getMechanic(), "images/" + hand[1].getName() + "_" + hand[1].getHp() + ".png");
+                } else if (gameState == 3) {
+                    playMinion(3, 7, hand[2].getMechanic(), "images/" + hand[2].getName() + "_" + hand[2].getHp() + ".png");
+                } else if (gameState == 4) {
+                    playMinion(4, 7, hand[3].getMechanic(), "images/" + hand[3].getName() + "_" + hand[3].getHp() + ".png");
+                } else if (gameState == 5) {
+                    playMinion(5, 7, hand[4].getMechanic(), "images/" + hand[4].getName() + "_" + hand[4].getHp() + ".png");
+                } else if (gameState == 6) {
+                    playMinion(6, 7, hand[5].getMechanic(), "images/" + hand[5].getName() + "_" + hand[5].getHp() + ".png");
+                } else if (gameState == 7) {
+                    playMinion(7, 7, hand[6].getMechanic(), "images/" + hand[6].getName() + "_" + hand[6].getHp() + ".png");
                 } else if (gameState == 100) {
-                    if (field[6].getState() == 2 && field[6].getExhausted() == 0) {
+                    if (field[0].getState() == 2 && field[0].getExhausted() == 0) {
                         gameState = 17;
                     }
                 }
@@ -935,18 +1163,165 @@ public class Board extends JFrame {
             //Right Click Magnify
             if (e.getModifiers() == MouseEvent.BUTTON3_MASK)
             {
+
+                //User Cards from left to right
+ 
+                //player deck 
+                if (x > 1 && x < 78 && y > 720 && y < 853) {
+                }
+  
                 if(x>135 && x<213 && y>720 && y<853){
                     cards.setBounds(500,400,233,359);  
-                    card.setIcon(getImageIcon(new File("images/c#_big.png")));
+                    cards.setIcon(getImageIcon(new File("images/" + hand[0].getName() + "_" + hand[0].getHp() + "_big.png")));
+                    gameState = 100;
                 }
                 else
                 {
                     cards.setBounds(135,685,78,120);
-                    card.setIcon(getImageIcon(new File("images/c#_3.png")));
-                }    
-            }
-        }
+                    cards.setIcon(getImageIcon(new File("images/" + hand[0].getName() + "_" + hand[0].getHp() + ".png")));
+                    gameState = 100;
+                }
 
+                if (x > 223 && x < 301 && y > 720 && y < 853) { //hand 2
+                    cards1.setBounds(500,400,233,359);  
+                    cards1.setIcon(getImageIcon(new File("images/" + hand[1].getName() + "_" + hand[1].getHp() + "_big.png")));
+                    gameState = 100;
+                }
+                else
+                {
+                    cards1.setBounds(223,685,78,120);
+                    cards1.setIcon(getImageIcon(new File("images/" + hand[1].getName() + "_" + hand[1].getHp() + ".png")));
+                    gameState = 100;
+                }
+
+                if (x > 311 && x < 389 && y > 720 && y < 853) { //hand 3
+                    cards2.setBounds(500,400,233,359);  
+                    cards2.setIcon(getImageIcon(new File("images/" + hand[2].getName() + "_" + hand[2].getHp() + "_big.png")));
+                    gameState = 100;
+                }
+                else
+                {
+                    cards2.setBounds(311,685,78,120);
+                    cards2.setIcon(getImageIcon(new File("images/" + hand[2].getName() + "_" + hand[2].getHp() + ".png")));
+                    gameState = 100;
+                }
+
+                if (x > 399 && x < 477 && y > 720 && y < 853) { //hand 4
+                    cards3.setBounds(500,400,233,359);  
+                    cards3.setIcon(getImageIcon(new File("images/" + hand[3].getName() + "_" + hand[3].getHp() + "_big.png")));
+                    gameState = 100;
+                }
+                else
+                {
+                    cards3.setBounds(399,685,78,120);
+                    cards3.setIcon(getImageIcon(new File("images/" + hand[3].getName() + "_" + hand[3].getHp() + ".png")));
+                    gameState = 100;
+                }
+
+                if (x > 487 && x < 565 && y > 720 && y < 853) { //hand 5
+                    cards4.setBounds(500,400,233,359);  
+                    cards4.setIcon(getImageIcon(new File("images/" + hand[4].getName() + "_" + hand[4].getHp() + "_big.png")));
+                    gameState = 100;
+                }
+                else
+                {
+                    cards4.setBounds(487,685,78,120);
+                    cards4.setIcon(getImageIcon(new File("images/" + hand[4].getName() + "_" + hand[4].getHp() + ".png")));
+                    gameState = 100;
+                }
+
+                if (x > 575 && x < 653 && y > 720 && y < 853) { //hand 6
+                    cards5.setBounds(500,400,233,359);  
+                    cards5.setIcon(getImageIcon(new File("images/" + hand[5].getName() + "_" + hand[5].getHp() + "_big.png")));
+                    gameState = 100;
+                }
+                else
+                {
+                    cards5.setBounds(575,685,78,120);
+                    cards5.setIcon(getImageIcon(new File("images/" + hand[5].getName() + "_" + hand[5].getHp() + ".png")));
+                    gameState = 100;
+                }
+
+                if (x > 663 && x < 741 && y > 720 && y < 853) { //hand 7
+                    cards6.setBounds(500,400,233,359);  
+                    cards6.setIcon(getImageIcon(new File("images/" + hand[6].getName() + "_" + hand[6].getHp() + "_big.png")));
+                    gameState = 100;
+                }
+                else
+                {
+                    cards6.setBounds(663,685,78,120);
+                    cards6.setIcon(getImageIcon(new File("images/" + hand[6].getName() + "_" + hand[6].getHp() + ".png")));
+                    gameState = 100;
+                }
+            
+                
+                //Enemy Hand from Left to Right
+                //enemy deck
+                if (x > 1 && x < 78 && y > 0 && y < 180) {
+                }
+
+                //enemy card 1
+                if (x > 135 && x < 213 && y > 0 && y < 180) {
+                }
+
+                //enemy card 2
+                if (x > 223 && x < 301 && y > 0 && y < 180) {
+                }
+
+                //enemy card 3
+                if (x > 311 && x < 389 && y > 0 && y < 180) {
+                }
+
+                //enemy card 4
+                if (x > 399 && x < 477 && y > 0 && y < 180) {
+                }
+            
+                //enemy card 5
+                if (x > 487 && x < 565 && y > 0 && y < 180) {
+                }
+
+                //enemy card 6                
+                if (x > 575 && x < 653 && y > 0 && y < 180) {
+                }
+
+                //enemy card 7
+                if (x > 663 && x < 741 && y > 0 && y < 180) {
+                }
+                
+            //User Playables from left to right
+                if (x > 215 && x < 300 && y > 465 && y < 600) { //space 1
+                }
+                if (x > 335 && x < 420 && y > 465 && y < 600) { //space 2
+                }
+                if (x >= 455 && x <= 540 && y >= 465 && y <= 600) { //space 3
+                }
+                if (x >= 573 && x <= 660 && y >= 465 && y <= 600) { //space 4
+                }
+                if (x > 693 && x < 779 && y > 465 && y < 600) { //space 5
+                }
+                if (x > 812 && x < 899 && y > 465 && y < 600) { //space 6
+                }
+                if (x > 931 && x < 1017 && y > 465 && y < 600) { //space 7
+                }
+                
+            //Enemy Playble from left to right
+            
+                if (x > 306 && x < 384 && y > 280 && y < 413) {
+                }
+                if (x > 394 && x < 472 && y > 280 && y < 413) {
+                }
+                if (x > 482 && x < 560 && y > 280 && y < 413) {
+                }
+                if (x > 570 && x < 648 && y > 280 && y < 413) {
+                }
+                if (x > 658 && x < 736 && y > 280 && y < 413) {
+                }
+                if (x > 746 && x < 824 && y > 280 && y < 413) {
+                }
+                if (x > 834 && x < 912 && y > 280 && y < 413) {
+                }
+            }
+        }            
         public void mousePressed(MouseEvent e) {
             x = e.getX();
             y = e.getY();

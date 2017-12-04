@@ -14,6 +14,7 @@ public class Creature extends Card {
 
     public Creature(String name, int state, int mechanic, int cost, int atk, int hp) {
         super(name, state, cost);
+        this.name = name;
         this.hp = hp;
         this.atk = atk;
         chp = hp;
@@ -25,12 +26,11 @@ public class Creature extends Card {
     }
 
     
-    
-    public Creature(String name, String art, String desc, int cost, int hp, int atk) {
-        super(name, art, desc, cost);
-        this.hp = hp;
-        this.atk = atk;
-    }
+//    public Creature(String name, String art, String desc, int cost, int hp, int atk) {
+//        super(name, art, desc, cost);
+//        this.hp = hp;
+//        this.atk = atk;
+//    }
 
     public int getHp() {
         return hp;
