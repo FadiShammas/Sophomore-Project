@@ -484,6 +484,7 @@ public class Board extends JFrame {
                 enemyCMana -= eHand[handpos -1].getCost();
                 eHand[handpos - 1].setState(0);
                 eField[boardpos - 1].setExhausted(1);
+                eField[boardpos - 1].setName(eHand[handpos -1].getName());
                 switch (handpos) {
                     case 1:
                         cards7.setVisible(false);
@@ -1430,18 +1431,87 @@ public class Board extends JFrame {
             //Enemy Playble from left to right
             
                 if (x > 306 && x < 384 && y > 280 && y < 413) {
+                    cards21.setBounds(500,225,233,359);  
+                    cards21.setIcon(getImageIcon(new File("images/" + eField[0].getName() + "_" + eField[0].getHp() + "_big.png")));
+                    gameState = 100;
                 }
+                else
+                {
+                    cards21.setBounds(306,230,78,120);
+                    cards21.setIcon(getImageIcon(new File("images/" + eField[0].getName() + "_" + eField[0].getHp() + ".png")));
+                    gameState = 100;
+                }
+                
                 if (x > 394 && x < 472 && y > 280 && y < 413) {
+                    cards22.setBounds(500,225,233,359);  
+                    cards22.setIcon(getImageIcon(new File("images/" + eField[1].getName() + "_" + eField[1].getHp() + "_big.png")));
+                    gameState = 100;
                 }
+                else
+                {
+                    cards22.setBounds(394,230,78,120);
+                    cards22.setIcon(getImageIcon(new File("images/" + eField[1].getName() + "_" + eField[1].getHp() + ".png")));
+                    gameState = 100;
+                }
+                
                 if (x > 482 && x < 560 && y > 280 && y < 413) {
+                    cards23.setBounds(500,225,233,359);  
+                    cards23.setIcon(getImageIcon(new File("images/" + eField[2].getName() + "_" + eField[2].getHp() + "_big.png")));
+                    gameState = 100;
                 }
+                else
+                {
+                    cards23.setBounds(482,230,78,120);
+                    cards23.setIcon(getImageIcon(new File("images/" + eField[2].getName() + "_" + eField[2].getHp() + ".png")));
+                    gameState = 100;
+                }
+                
                 if (x > 570 && x < 648 && y > 280 && y < 413) {
+                    cards24.setBounds(500,225,233,359);  
+                    cards24.setIcon(getImageIcon(new File("images/" + eField[3].getName() + "_" + eField[3].getHp() + "_big.png")));
+                    gameState = 100;
                 }
+                else
+                {
+                    cards24.setBounds(570,230,78,120);
+                    cards24.setIcon(getImageIcon(new File("images/" + eField[3].getName() + "_" + eField[3].getHp() + ".png")));
+                    gameState = 100;
+                }
+                
                 if (x > 658 && x < 736 && y > 280 && y < 413) {
+                    cards25.setBounds(500,225,233,359);  
+                    cards25.setIcon(getImageIcon(new File("images/" + eField[4].getName() + "_" + eField[4].getHp() + "_big.png")));
+                    gameState = 100;
                 }
+                else
+                {
+                    cards25.setBounds(658,230,78,120);
+                    cards25.setIcon(getImageIcon(new File("images/" + eField[4].getName() + "_" + eField[4].getHp() + ".png")));
+                    gameState = 100;
+                }
+                
                 if (x > 746 && x < 824 && y > 280 && y < 413) {
+                    cards26.setBounds(500,225,233,359);  
+                    cards26.setIcon(getImageIcon(new File("images/" + eField[5].getName() + "_" + eField[5].getHp() + "_big.png")));
+                    gameState = 100;
                 }
+                else
+                {
+                    cards26.setBounds(746,230,78,120);
+                    cards26.setIcon(getImageIcon(new File("images/" + eField[5].getName() + "_" + eField[5].getHp() + ".png")));
+                    gameState = 100;
+                }
+                
                 if (x > 834 && x < 912 && y > 280 && y < 413) {
+                    cards27.setBounds(500,225,233,359);  
+                    cards27.setIcon(getImageIcon(new File("images/" + eField[6].getName() + "_" + eField[6].getHp() + "_big.png")));
+                    gameState = 100;
+                }
+                else
+                {
+                    cards27.setBounds(834,230,78,120);
+                    cards27.setIcon(getImageIcon(new File("images/" + eField[6].getName() + "_" + eField[6].getHp() + ".png")));
+                    gameState = 100;
                 }
             }
         }            
