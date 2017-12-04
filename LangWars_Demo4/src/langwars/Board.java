@@ -356,6 +356,7 @@ public class Board extends JFrame {
 
                 loadBoard();
 
+                frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
 
                 runGame();
