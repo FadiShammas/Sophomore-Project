@@ -463,29 +463,7 @@ public class Board extends JFrame {
                 cards12.setVisible(false);
                 cards13.setIcon(getImageIcon(new File(enemyHandCard7)));
                 cards13.setVisible(false);
-
-                //(String name, int state, int mechanic, int cost, int atk, int hp)
-//                eHand[0] = new Creature("Java", 1, 0, 7, 10, 2);
-//                eHand[1] = new Creature("Python", 1, 0, 7, 3, 4);
-//                eHand[2] = new Creature("Ruby", 1, 0, 4, 3, 4);
-//                eHand[3] = new Creature("SQL", 1, 0, 6, 6, 4);
-//                eHand[4] = new Creature("PHP", 1, 0, 4, 4, 5);
-//                eHand[5] = new Creature("Swift", 1, 0, 5, 4, 4);
-//                eHand[6] = new Creature("C++", 1, 0, 7, 4, 4);
-//                cards7.setIcon(getImageIcon(new File("images/java_2.png")));
-//                cards7.setVisible(false);
-//                cards8.setIcon(getImageIcon(new File("images/python_4.png")));
-//                cards8.setVisible(false);
-//                cards9.setIcon(getImageIcon(new File("images/ruby_4.png")));
-//                cards9.setVisible(false);
-//                cards10.setIcon(getImageIcon(new File("images/sql_4.png")));
-//                cards10.setVisible(false);
-//                cards11.setIcon(getImageIcon(new File("images/php_5.png")));
-//                cards11.setVisible(false);
-//                cards12.setIcon(getImageIcon(new File("images/swift_4.png")));
-//                cards12.setVisible(false);
-//                cards13.setIcon(getImageIcon(new File("images/c++_4.png")));
-//                cards13.setVisible(false);
+                
             }
             
             public void loadBoard() {
@@ -596,6 +574,7 @@ public class Board extends JFrame {
                 userCMana -= hand[handpos -1].getCost();
                 hand[handpos - 1].setState(0);
                 field[boardpos - 1].setExhausted(1);
+                field[boardpos - 1].setName(hand[handpos -1].getName());
                 switch (handpos) {
                     case 1:
                         cards.setVisible(false);
@@ -696,6 +675,7 @@ public class Board extends JFrame {
                 enemyCMana -= eHand[0].getCost();
                 eHand[handpos - 1].setState(0);
                 eField[boardpos - 1].setExhausted(1);
+                eField[boardpos - 1].setName(eHand[handpos -1].getName());
                 switch (handpos) {
                     case 1:
                         cards7.setVisible(false);
@@ -1171,7 +1151,7 @@ public class Board extends JFrame {
                 }
   
                 if(x>135 && x<213 && y>720 && y<853){
-                    cards.setBounds(500,400,233,359);  
+                    cards.setBounds(500,225,233,359);  
                     cards.setIcon(getImageIcon(new File("images/" + hand[0].getName() + "_" + hand[0].getHp() + "_big.png")));
                     gameState = 100;
                 }
@@ -1183,7 +1163,7 @@ public class Board extends JFrame {
                 }
 
                 if (x > 223 && x < 301 && y > 720 && y < 853) { //hand 2
-                    cards1.setBounds(500,400,233,359);  
+                    cards1.setBounds(500,225,233,359);  
                     cards1.setIcon(getImageIcon(new File("images/" + hand[1].getName() + "_" + hand[1].getHp() + "_big.png")));
                     gameState = 100;
                 }
@@ -1195,7 +1175,7 @@ public class Board extends JFrame {
                 }
 
                 if (x > 311 && x < 389 && y > 720 && y < 853) { //hand 3
-                    cards2.setBounds(500,400,233,359);  
+                    cards2.setBounds(500,225,233,359);  
                     cards2.setIcon(getImageIcon(new File("images/" + hand[2].getName() + "_" + hand[2].getHp() + "_big.png")));
                     gameState = 100;
                 }
@@ -1207,7 +1187,7 @@ public class Board extends JFrame {
                 }
 
                 if (x > 399 && x < 477 && y > 720 && y < 853) { //hand 4
-                    cards3.setBounds(500,400,233,359);  
+                    cards3.setBounds(500,225,233,359);  
                     cards3.setIcon(getImageIcon(new File("images/" + hand[3].getName() + "_" + hand[3].getHp() + "_big.png")));
                     gameState = 100;
                 }
@@ -1219,7 +1199,7 @@ public class Board extends JFrame {
                 }
 
                 if (x > 487 && x < 565 && y > 720 && y < 853) { //hand 5
-                    cards4.setBounds(500,400,233,359);  
+                    cards4.setBounds(500,225,233,359);  
                     cards4.setIcon(getImageIcon(new File("images/" + hand[4].getName() + "_" + hand[4].getHp() + "_big.png")));
                     gameState = 100;
                 }
@@ -1231,7 +1211,7 @@ public class Board extends JFrame {
                 }
 
                 if (x > 575 && x < 653 && y > 720 && y < 853) { //hand 6
-                    cards5.setBounds(500,400,233,359);  
+                    cards5.setBounds(500,225,233,359);  
                     cards5.setIcon(getImageIcon(new File("images/" + hand[5].getName() + "_" + hand[5].getHp() + "_big.png")));
                     gameState = 100;
                 }
@@ -1243,7 +1223,7 @@ public class Board extends JFrame {
                 }
 
                 if (x > 663 && x < 741 && y > 720 && y < 853) { //hand 7
-                    cards6.setBounds(500,400,233,359);  
+                    cards6.setBounds(500,225,233,359);  
                     cards6.setIcon(getImageIcon(new File("images/" + hand[6].getName() + "_" + hand[6].getHp() + "_big.png")));
                     gameState = 100;
                 }
@@ -1257,51 +1237,193 @@ public class Board extends JFrame {
                 
                 //Enemy Hand from Left to Right
                 //enemy deck
-                if (x > 1 && x < 78 && y > 0 && y < 180) {
+                if (x > 1 && x < 78 && y > 0 && y < 180) 
+                {
                 }
 
+
                 //enemy card 1
-                if (x > 135 && x < 213 && y > 0 && y < 180) {
+                if (x > 135 && x < 213 && y > 0 && y < 180) 
+                {
+                    cards7.setBounds(500,225,233,359);  
+                    cards7.setIcon(getImageIcon(new File("images/" + eHand[0].getName() + "_" + eHand[0].getHp() + "_big.png")));
+                    gameState = 100;
+                }
+                else
+                {
+                    cards7.setBounds(135,5,78,120);
+                    cards7.setIcon(getImageIcon(new File("images/" + eHand[0].getName() + "_" + eHand[0].getHp() + ".png")));
+                    gameState = 100;
                 }
 
                 //enemy card 2
-                if (x > 223 && x < 301 && y > 0 && y < 180) {
+                if (x > 223 && x < 301 && y > 0 && y < 180) 
+                {
+                    cards8.setBounds(500,225,233,359);  
+                    cards8.setIcon(getImageIcon(new File("images/" + eHand[1].getName() + "_" + eHand[1].getHp() + "_big.png")));
+                    gameState = 100;
+                }
+                else
+                {
+                    cards8.setBounds(223,5,78,120);
+                    cards8.setIcon(getImageIcon(new File("images/" + eHand[1].getName() + "_" + eHand[1].getHp() + ".png")));
+                    gameState = 100;
                 }
 
                 //enemy card 3
-                if (x > 311 && x < 389 && y > 0 && y < 180) {
+                if (x > 311 && x < 389 && y > 0 && y < 180) 
+                {
+                    cards9.setBounds(500,225,233,359);  
+                    cards9.setIcon(getImageIcon(new File("images/" + eHand[2].getName() + "_" + eHand[2].getHp() + "_big.png")));
+                    gameState = 100;
+                }
+                else
+                {
+                    cards9.setBounds(311,5,78,120);
+                    cards9.setIcon(getImageIcon(new File("images/" + eHand[2].getName() + "_" + eHand[2].getHp() + ".png")));
+                    gameState = 100;
                 }
 
                 //enemy card 4
-                if (x > 399 && x < 477 && y > 0 && y < 180) {
+                if (x > 399 && x < 477 && y > 0 && y < 180) 
+                {
+                    cards10.setBounds(500,225,233,359);  
+                    cards10.setIcon(getImageIcon(new File("images/" + eHand[3].getName() + "_" + eHand[3].getHp() + "_big.png")));
+                    gameState = 100;
+                }
+                else
+                {
+                    cards10.setBounds(399,5,78,120);
+                    cards10.setIcon(getImageIcon(new File("images/" + eHand[3].getName() + "_" + eHand[3].getHp() + ".png")));
+                    gameState = 100;
                 }
             
                 //enemy card 5
-                if (x > 487 && x < 565 && y > 0 && y < 180) {
+                if (x > 487 && x < 565 && y > 0 && y < 180) 
+                {
+                    cards11.setBounds(500,225,233,359);  
+                    cards11.setIcon(getImageIcon(new File("images/" + eHand[4].getName() + "_" + eHand[4].getHp() + "_big.png")));
+                    gameState = 100;
+                }
+                else
+                {
+                    cards11.setBounds(487,5,78,120);
+                    cards11.setIcon(getImageIcon(new File("images/" + eHand[4].getName() + "_" + eHand[4].getHp() + ".png")));
+                    gameState = 100;
                 }
 
                 //enemy card 6                
-                if (x > 575 && x < 653 && y > 0 && y < 180) {
+                if (x > 575 && x < 653 && y > 0 && y < 180) 
+                {
+                    cards12.setBounds(500,225,233,359);  
+                    cards12.setIcon(getImageIcon(new File("images/" + eHand[5].getName() + "_" + eHand[5].getHp() + "_big.png")));
+                    gameState = 100;
+                }
+                else
+                {
+                    cards12.setBounds(575,5,78,120);
+                    cards12.setIcon(getImageIcon(new File("images/" + eHand[5].getName() + "_" + eHand[5].getHp() + ".png")));
+                    gameState = 100;
                 }
 
                 //enemy card 7
-                if (x > 663 && x < 741 && y > 0 && y < 180) {
+                if (x > 663 && x < 741 && y > 0 && y < 180) 
+                {
+                    cards13.setBounds(500,225,233,359);  
+                    cards13.setIcon(getImageIcon(new File("images/" + eHand[6].getName() + "_" + eHand[6].getHp() + "_big.png")));
+                    gameState = 100;
                 }
+                else
+                {
+                    cards13.setBounds(663,5,78,120);
+                    cards13.setIcon(getImageIcon(new File("images/" + eHand[6].getName() + "_" + eHand[6].getHp() + ".png")));
+                    gameState = 100;
+                }
+
                 
-            //User Playables from left to right
+                //User Playables from left to right
                 if (x > 215 && x < 300 && y > 465 && y < 600) { //space 1
+                    cards14.setBounds(500,225,233,359);  
+                    cards14.setIcon(getImageIcon(new File("images/" + field[0].getName() + "_" + field[0].getHp() + "_big.png")));
+                    gameState = 100;
                 }
+                else
+                {
+                    cards14.setBounds(215,470,78,120);
+                    cards14.setIcon(getImageIcon(new File("images/" + field[0].getName() + "_" + field[0].getHp() + ".png")));
+                    gameState = 100;
+                }
+
                 if (x > 335 && x < 420 && y > 465 && y < 600) { //space 2
+                    cards15.setBounds(500,225,233,359);  
+                    cards15.setIcon(getImageIcon(new File("images/" + field[1].getName() + "_" + field[1].getHp() + "_big.png")));
+                    gameState = 100;
                 }
+                else
+                {
+                    cards15.setBounds(335,470,78,120);
+                    cards15.setIcon(getImageIcon(new File("images/" + field[1].getName() + "_" + field[1].getHp() + ".png")));
+                    gameState = 100;
+                }
+
                 if (x >= 455 && x <= 540 && y >= 465 && y <= 600) { //space 3
+                    cards16.setBounds(500,225,233,359);  
+                    cards16.setIcon(getImageIcon(new File("images/" + field[2].getName() + "_" + field[2].getHp() + "_big.png")));
+                    gameState = 100;
                 }
+                else
+                {
+                    cards16.setBounds(455,470,78,120);
+                    cards16.setIcon(getImageIcon(new File("images/" + field[2].getName() + "_" + field[2].getHp() + ".png")));
+                    gameState = 100;
+                }
+
                 if (x >= 573 && x <= 660 && y >= 465 && y <= 600) { //space 4
+                    cards17.setBounds(500,225,233,359);  
+                    cards17.setIcon(getImageIcon(new File("images/" + field[3].getName() + "_" + field[3].getHp() + "_big.png")));
+                    gameState = 100;
                 }
+                else
+                {
+                    cards17.setBounds(573,470,78,120);
+                    cards17.setIcon(getImageIcon(new File("images/" + field[3].getName() + "_" + field[3].getHp() + ".png")));
+                    gameState = 100;
+                }
+
                 if (x > 693 && x < 779 && y > 465 && y < 600) { //space 5
+                    cards18.setBounds(500,225,233,359);  
+                    cards18.setIcon(getImageIcon(new File("images/" + field[4].getName() + "_" + field[4].getHp() + "_big.png")));
+                    gameState = 100;
                 }
+                else
+                {
+                    cards18.setBounds(693,470,78,120);
+                    cards18.setIcon(getImageIcon(new File("images/" + field[4].getName() + "_" + field[4].getHp() + ".png")));
+                    gameState = 100;
+                }
+
                 if (x > 812 && x < 899 && y > 465 && y < 600) { //space 6
+                    cards19.setBounds(500,225,233,359);  
+                    cards19.setIcon(getImageIcon(new File("images/" + field[5].getName() + "_" + field[5].getHp() + "_big.png")));
+                    gameState = 100;
                 }
+                else
+                {
+                    cards19.setBounds(812,470,78,120);
+                    cards19.setIcon(getImageIcon(new File("images/" + field[5].getName() + "_" + field[5].getHp() + ".png")));
+                    gameState = 100;
+                }
+
                 if (x > 931 && x < 1017 && y > 465 && y < 600) { //space 7
+                    cards20.setBounds(500,225,233,359);  
+                    cards20.setIcon(getImageIcon(new File("images/" + field[6].getName() + "_" + field[6].getHp() + "_big.png")));
+                    gameState = 100;
+                }
+                else
+                {
+                    cards20.setBounds(931,470,78,120);
+                    cards20.setIcon(getImageIcon(new File("images/" + field[6].getName() + "_" + field[6].getHp() + ".png")));
+                    gameState = 100;
                 }
                 
             //Enemy Playble from left to right
