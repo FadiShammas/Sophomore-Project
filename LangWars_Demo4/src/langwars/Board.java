@@ -23,8 +23,8 @@ public class Board extends JFrame {
     public static Creature css = new Creature("CSS", 2, 0, 6, 2, 2);
     public static Creature[] eHand = new Creature[7];
     public static Creature[] eField = new Creature[7];
-    public int health = 10;
-    public int enemyHealth = 10;
+    public int health = 25;
+    public int enemyHealth = 25;
     public int userMana = 0;
     public int userCMana = 0;
     public int enemyMana = 0;
@@ -60,6 +60,7 @@ public class Board extends JFrame {
     public JLabel cards25 = new JLabel();
     public JLabel cards26 = new JLabel();
     public JLabel cards27 = new JLabel();
+    public static JLabel hp = new JLabel();
     public static JLabel mana = new JLabel();
     public static JLabel enemyHP = new JLabel();
     public static JLabel enemyM = new JLabel();
@@ -151,6 +152,257 @@ public class Board extends JFrame {
                             enemyCMana = enemyMana;
                             enemyM.setText("Mana: " + String.valueOf(enemyCMana) + "/" + String.valueOf(enemyMana));
 
+                            //Computer Attacks                                                                 
+                            if (cards14.isVisible()) {
+                                if (cards21.isVisible())
+                                {
+                                    eAttack(0,0);
+                                }
+                                if (cards22.isVisible())
+                                {
+                                    eAttack(1,0);
+                                } 
+                                if (cards23.isVisible())
+                                {
+                                    eAttack(2,0);
+                                } 
+                                if (cards24.isVisible())
+                                {
+                                    eAttack(3,0);
+                                } 
+                                if (cards25.isVisible())
+                                {
+                                    eAttack(4,0);
+                                } 
+                                if (cards26.isVisible())
+                                {
+                                    eAttack(5,0);
+                                } 
+                                if (cards27.isVisible())
+                                {
+                                    eAttack(6,0);
+                                }                                 
+                            }
+
+                            if (cards15.isVisible()) {
+                                if (cards21.isVisible())
+                                {
+                                    eAttack(0,1);
+                                }
+                                if (cards22.isVisible())
+                                {
+                                    eAttack(1,1);
+                                } 
+                                if (cards23.isVisible())
+                                {
+                                    eAttack(2,1);
+                                } 
+                                if (cards24.isVisible())
+                                {
+                                    eAttack(3,1);
+                                } 
+                                if (cards25.isVisible())
+                                {
+                                    eAttack(4,1);
+                                } 
+                                if (cards26.isVisible())
+                                {
+                                    eAttack(5,1);
+                                } 
+                                if (cards27.isVisible())
+                                {
+                                    eAttack(6,1);
+                                } 
+                            }
+
+                            if (cards16.isVisible()) {
+                                if (cards21.isVisible())
+                                {
+                                    eAttack(0,2);
+                                }
+                                if (cards22.isVisible())
+                                {
+                                    eAttack(1,2);
+                                } 
+                                if (cards23.isVisible())
+                                {
+                                    eAttack(2,2);
+                                } 
+                                if (cards24.isVisible())
+                                {
+                                    eAttack(3,2);
+                                } 
+                                if (cards25.isVisible())
+                                {
+                                    eAttack(4,2);
+                                } 
+                                if (cards26.isVisible())
+                                {
+                                    eAttack(5,2);
+                                } 
+                                if (cards27.isVisible())
+                                {
+                                    eAttack(6,2);
+                                } 
+                            }
+
+                            if (cards17.isVisible()) {
+                                if (cards21.isVisible())
+                                {
+                                    eAttack(0,3);
+                                }
+                                if (cards22.isVisible())
+                                {
+                                    eAttack(1,3);
+                                } 
+                                if (cards23.isVisible())
+                                {
+                                    eAttack(2,3);
+                                } 
+                                if (cards24.isVisible())
+                                {
+                                    eAttack(3,3);
+                                } 
+                                if (cards25.isVisible())
+                                {
+                                    eAttack(4,3);
+                                } 
+                                if (cards26.isVisible())
+                                {
+                                    eAttack(5,3);
+                                } 
+                                if (cards27.isVisible())
+                                {
+                                    eAttack(6,3);
+                                } 
+                            }
+
+                            if (cards18.isVisible()) {
+                                if (cards21.isVisible())
+                                {
+                                    eAttack(0,4);
+                                }
+                                if (cards22.isVisible())
+                                {
+                                    eAttack(1,4);
+                                } 
+                                if (cards23.isVisible())
+                                {
+                                    eAttack(2,4);
+                                } 
+                                if (cards24.isVisible())
+                                {
+                                    eAttack(3,4);
+                                } 
+                                if (cards25.isVisible())
+                                {
+                                    eAttack(4,4);
+                                } 
+                                if (cards26.isVisible())
+                                {
+                                    eAttack(5,4);
+                                } 
+                                if (cards27.isVisible())
+                                {
+                                    eAttack(6,4);
+                                } 
+                            }
+
+                            if (cards19.isVisible()) {
+                                if (cards21.isVisible())
+                                {
+                                    eAttack(0,5);
+                                }
+                                if (cards22.isVisible())
+                                {
+                                    eAttack(1,5);
+                                } 
+                                if (cards23.isVisible())
+                                {
+                                    eAttack(2,5);
+                                } 
+                                if (cards24.isVisible())
+                                {
+                                    eAttack(3,5);
+                                } 
+                                if (cards25.isVisible())
+                                {
+                                    eAttack(4,5);
+                                } 
+                                if (cards26.isVisible())
+                                {
+                                    eAttack(5,5);
+                                } 
+                                if (cards27.isVisible())
+                                {
+                                    eAttack(6,5);
+                                } 
+                            }
+
+                            if (cards20.isVisible()) {
+                                if (cards21.isVisible())
+                                {
+                                    eAttack(0,6);
+                                }
+                                if (cards22.isVisible())
+                                {
+                                    eAttack(1,6);
+                                } 
+                                if (cards23.isVisible())
+                                {
+                                    eAttack(2,6);
+                                } 
+                                if (cards24.isVisible())
+                                {
+                                    eAttack(3,6);
+                                } 
+                                if (cards25.isVisible())
+                                {
+                                    eAttack(4,6);
+                                } 
+                                if (cards26.isVisible())
+                                {
+                                    eAttack(5,6);
+                                } 
+                                if (cards27.isVisible())
+                                {
+                                    eAttack(6,6);
+                                } 
+                            }
+                            
+                            else 
+                            {
+                                if (cards21.isVisible())
+                                {
+                                    eAttack(0,32);
+                                }
+                                if (cards22.isVisible())
+                                {
+                                    eAttack(1,32);
+                                } 
+                                if (cards23.isVisible())
+                                {
+                                    eAttack(2,32);
+                                } 
+                                if (cards24.isVisible())
+                                {
+                                    eAttack(3,32);
+                                } 
+                                if (cards25.isVisible())
+                                {
+                                    eAttack(4,32);
+                                } 
+                                if (cards26.isVisible())
+                                {
+                                    eAttack(5,32);
+                                } 
+                                if (cards27.isVisible())
+                                {
+                                    eAttack(6,32);
+                                }     
+                            }
+                            
+                            //Computer Play Hand Cards to Field
                             if (cards7.isVisible()) {
                                 if (enemyCMana > eHand[0].getCost()) {
                                     enemyPlayMinion(1, 1, eHand[0].getMechanic(), "images/" + eHand[0].getName() + "_" + eHand[0].getHp() + ".png");
@@ -192,7 +444,7 @@ public class Board extends JFrame {
                                     enemyPlayMinion(7, 7, eHand[6].getMechanic(), "images/" + eHand[6].getName() + "_" + eHand[6].getHp() + ".png");
                                 }
                             }
-
+                            
                             //Computer Card Draw                                                        
                             if (turnCount == 0) {
                                 cards7.setVisible(true);
@@ -211,21 +463,22 @@ public class Board extends JFrame {
                             }
 
                             turnCount++;
-
+                                                        
                         } else {
-
-                            //Game End                            
+                            
+                            //Force Game End if state set to 99                           
                             frame.dispose();
                         }
                     }
                 });
+                
                 endTurn.setFont(new Font("Courier New", Font.BOLD, 20));
                 endTurn.setFocusPainted(false);
                 frame.add(endTurn);
 
                 //HP
                 //User
-                JLabel hp = new JLabel();
+//                JLabel hp = new JLabel();
                 hp.setText("HP: " + String.valueOf(health));
                 hp.setBounds(875, 685, 150, 50);
                 hp.setFont(new Font("Courier New", Font.BOLD, 40));
@@ -546,6 +799,148 @@ public class Board extends JFrame {
                 }
             }
 
+            public void eAttack(int minion, int target) {
+                if (target == 32) {
+                    System.out.println("Computer Attacked Player Hero " + target + " with Enemy Playable " + minion + " for " + eField[minion].getAtk() + " damage.");
+
+                    health -= eField[minion].getAtk();
+
+                    if (health <= 0) {
+                        health = 0;
+                        hp.setText("HP: " + String.valueOf(health));
+                        JOptionPane.showMessageDialog(frame, "You have lost!\nExiting program...","Defeat!", JOptionPane.PLAIN_MESSAGE);
+                        System.exit(0);
+                        } else {
+                        gameState = 100;
+                    }
+
+                    hp.setText("HP: " + String.valueOf(health));
+                    
+                } else {
+                    System.out.println("Computer Attacked Player Playable " + target + " with User Playable " + minion + " for " + eField[minion].getAtk() + " damage.");
+
+                    field[target].chp -= eField[minion].getAtk();
+
+                    eField[minion].setChp(eField[minion].chp -= field[target].getAtk());
+
+                    if (field[target].chp <= 0) {
+                        field[target].chp = 0;
+                        System.out.println("Fatal Blow to Player Playable " + target + ".");
+
+                        switch (target) {
+                            case 0:
+                                cards14.setVisible(false);
+                                break;
+                            case 1:
+                                cards15.setVisible(false);
+                                break;
+                            case 2:
+                                cards16.setVisible(false);
+                                break;
+                            case 3:
+                                cards17.setVisible(false);
+                                break;
+                            case 4:
+                                cards18.setVisible(false);
+                                break;
+                            case 5:
+                                cards19.setVisible(false);
+                                break;
+                            case 6:
+                                cards20.setVisible(false);
+                        }
+                    } else {
+                        System.out.println("Non-Fatal Blow to Player Playable " + target + ", HP now " + field[target].chp + ".");
+
+                        switch (target) {
+                            case 0:
+                                cards14.setIcon(getImageIcon(new File("images/" + field[0].getName() + "_" + field[0].chp + ".png")));
+                                break;
+                            case 1:
+                                cards15.setIcon(getImageIcon(new File("images/" + field[1].getName() + "_" + field[1].chp + ".png")));
+                                break;
+                            case 2:
+                                cards16.setIcon(getImageIcon(new File("images/" + field[2].getName() + "_" + field[2].chp + ".png")));
+                                break;
+                            case 3:
+                                cards17.setIcon(getImageIcon(new File("images/" + field[3].getName() + "_" + field[3].chp + ".png")));
+                                break;
+                            case 4:
+                                cards18.setIcon(getImageIcon(new File("images/" + field[4].getName() + "_" + field[4].chp + ".png")));
+                                break;
+                            case 5:
+                                cards19.setIcon(getImageIcon(new File("images/" + field[5].getName() + "_" + field[5].chp + ".png")));
+                                break;
+                            case 6:
+                                cards20.setIcon(getImageIcon(new File("images/" + field[6].getName() + "_" + field[6].chp + ".png")));
+                        }
+                    }
+
+                    if (eField[minion].chp <= 0) {
+                        eField[minion].chp = 0;
+                        System.out.println("Fatal Blow to Computer Playable " + minion + ".");
+//here
+                        switch (minion) {
+                            case 0:
+                                cards21.setIcon(getImageIcon(new File("images/" + eField[0].getName() + "_" + eField[0].hp + ".png")));
+                                cards21.setVisible(false);
+                                break;
+                            case 1:
+                                cards22.setIcon(getImageIcon(new File("images/" + eField[1].getName() + "_" + eField[1].hp + ".png")));
+                                cards22.setVisible(false);
+                                break;
+                            case 2:
+                                cards23.setIcon(getImageIcon(new File("images/" + eField[2].getName() + "_" + eField[2].hp + ".png")));
+                                cards23.setVisible(false);
+                                break;
+                            case 3:
+                                cards24.setIcon(getImageIcon(new File("images/" + eField[3].getName() + "_" + eField[3].hp + ".png")));
+                                cards24.setVisible(false);
+                                break;
+                            case 4:
+                                cards25.setIcon(getImageIcon(new File("images/" + eField[4].getName() + "_" + eField[4].hp + ".png")));
+                                cards25.setVisible(false);
+                                break;
+                            case 5:
+                                cards26.setIcon(getImageIcon(new File("images/" + eField[5].getName() + "_" + eField[5].hp + ".png")));
+                                cards26.setVisible(false);
+                                break;
+                            case 6:
+                                cards27.setIcon(getImageIcon(new File("images/" + eField[6].getName() + "_" + eField[6].hp + ".png")));
+                                cards27.setVisible(false);
+                        }
+                    } else {
+                        System.out.println("Non-Fatal Blow to Computer Playable " + minion + ", HP now " + eField[minion].chp + ".");
+
+                        switch (minion) {
+                            case 0:
+                                cards21.setIcon(getImageIcon(new File("images/" + eField[0].getName() + "_" + eField[0].chp + ".png")));
+                                break;
+                            case 1:
+                                cards22.setIcon(getImageIcon(new File("images/" + eField[1].getName() + "_" + eField[1].chp + ".png")));
+                                break;
+                            case 2:
+                                cards23.setIcon(getImageIcon(new File("images/" + eField[2].getName() + "_" + eField[2].chp + ".png")));
+                                break;
+                            case 3:
+                                cards24.setIcon(getImageIcon(new File("images/" + eField[3].getName() + "_" + eField[3].chp + ".png")));
+                                break;
+                            case 4:
+                                cards25.setIcon(getImageIcon(new File("images/" + eField[4].getName() + "_" + eField[4].chp + ".png")));
+                                break;
+                            case 5:
+                                cards26.setIcon(getImageIcon(new File("images/" + eField[5].getName() + "_" + eField[5].chp + ".png")));
+                                break;
+                            case 6:
+                                cards27.setIcon(getImageIcon(new File("images/" + eField[6].getName() + "_" + eField[6].chp + ".png")));
+                        }
+                    }
+                }
+
+                repaint();
+                gameState = 100;
+            }
+            
         });
     }
 
