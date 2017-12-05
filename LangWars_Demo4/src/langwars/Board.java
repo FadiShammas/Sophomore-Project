@@ -2,16 +2,13 @@ package langwars;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.util.Random;
 
 public class Board extends JFrame {
-//playminion(hand, pos) method
 
     public static Boolean mouseRead = false;
     public static int clickPos = 0;
@@ -98,13 +95,8 @@ public class Board extends JFrame {
 
             public void run() {
 
-                //try {
-                // Create the frame. Close application on close window
+
                 frame.addMouseListener(new MouseHandler());
-                /*Mouse coordinates*/ /*frame.addMouseListener(new MouseAdapter() {
-                        public void mouseClicked(MouseEvent e) {
-                        System.out.println(e.getPoint());}
-                            });*/
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
                 // End Turn Button
@@ -808,6 +800,7 @@ public class Board extends JFrame {
                     if (health <= 0) {
                         health = 0;
                         hp.setText("HP: " + String.valueOf(health));
+                        System.out.println("Fatal Player Damange!\nPlayer has been defeated.");
                         JOptionPane.showMessageDialog(frame, "You have lost!\nExiting program...","Defeat!", JOptionPane.PLAIN_MESSAGE);
                         System.exit(0);
                         } else {
@@ -879,7 +872,7 @@ public class Board extends JFrame {
                     if (eField[minion].chp <= 0) {
                         eField[minion].chp = 0;
                         System.out.println("Fatal Blow to Computer Playable " + minion + ".");
-//here
+
                         switch (minion) {
                             case 0:
                                 cards21.setIcon(getImageIcon(new File("images/" + eField[0].getName() + "_" + eField[0].hp + ".png")));
@@ -962,6 +955,7 @@ public class Board extends JFrame {
                     if (enemyHealth <= 0) {
                         enemyHealth = 0;
                         enemyHP.setText("HP: " + String.valueOf(enemyHealth));
+                        System.out.println("Fatal Computer Damange!\nPlayer has won.");
                         JOptionPane.showMessageDialog(frame, "You have won!\nExiting program...","Congratulations!", JOptionPane.PLAIN_MESSAGE);
                         System.exit(0);
                     } else {
@@ -1270,7 +1264,6 @@ public class Board extends JFrame {
         }
 
         public void mouseClicked(MouseEvent e) {
-//            System.out.println("User clicked on Player Hand Card " + gameState);
 
             //Enemy Cards from left to right
             if (x > 1 && x < 78 && y > 0 && y < 180) {
@@ -1420,7 +1413,6 @@ public class Board extends JFrame {
             }
 
             //User Playables from left to right
-//            if (x > 306 && x < 384 && y > 500 && y < 633) { //space 1
             if (x > 215 && x < 300 && y > 465 && y < 600) { //space 1
                 System.out.println("User Clicked on User Playable 1");
 
@@ -1448,7 +1440,6 @@ public class Board extends JFrame {
                 }
             }
 
-//            if (x > 394 && x < 472 && y > 500 && y < 633) { //space 2
             if (x > 335 && x < 420 && y > 465 && y < 600) { //space 2
                 System.out.println("User Clicked on User Playable 2");
                 if (mouseRead == true) {
@@ -1474,7 +1465,6 @@ public class Board extends JFrame {
                     }
                 }
             }
-//            if (x > 482 && x < 560 && y > 500 && y < 633) { //space 3
 
             if (x >= 455 && x <= 540 && y >= 465 && y <= 600) { //space 3
                 System.out.println("User Clicked on User Playable 3");
@@ -1501,7 +1491,7 @@ public class Board extends JFrame {
                     }
                 }
             }
-//            if (x > 570 && x < 648 && y > 500 && y < 633) { //space 4
+
             if (x >= 573 && x <= 660 && y >= 465 && y <= 600) { //space 4
                 System.out.println("User Clicked on User Playable 4");
                 if (mouseRead == true) {
@@ -1528,7 +1518,7 @@ public class Board extends JFrame {
                 }
             }
 
-//            if (x > 658 && x < 736 && y > 500 && y < 633) { //space 5
+
             if (x > 693 && x < 779 && y > 465 && y < 600) { //space 5
                 System.out.println("User Clicked on User Playable 5");
                 if (mouseRead == true) {
@@ -1555,7 +1545,6 @@ public class Board extends JFrame {
                 }
             }
 
-//            if (x > 746 && x < 824 && y > 500 && y < 633) { //space 6
             if (x > 812 && x < 899 && y > 465 && y < 600) { //space 6
                 System.out.println("User Clicked on User Playable 6");
                 if (mouseRead == true) {
@@ -1582,7 +1571,6 @@ public class Board extends JFrame {
                 }
             }
 
-//            if (x > 834 && x < 912 && y > 500 && y < 633) { //space 7
             if (x > 931 && x < 1017 && y > 465 && y < 600) { //space 7
                 System.out.println("User Clicked on User Playable 7");
                 if (mouseRead == true) {
