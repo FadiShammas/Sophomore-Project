@@ -20,10 +20,10 @@ public class Board extends JFrame {
     public static Creature css = new Creature("CSS", 2, 0, 6, 2, 2);
     public static Creature[] eHand = new Creature[7];
     public static Creature[] eField = new Creature[7];
-    public int health = 25;
-    public int enemyHealth = 25;
-    public int userMana = 0;
-    public int userCMana = 0;
+    public int health = 20;
+    public int enemyHealth = 20;
+    public int userMana = 1;
+    public int userCMana = 1;
     public int enemyMana = 0;
     public int enemyCMana = 0;
     public int turnCount = 0;
@@ -627,13 +627,13 @@ public class Board extends JFrame {
                 //String name, int state, int mechanic, int cost, int atk, int hp
                 deck[0] = new Creature("c#", 1, 0, 7, 3, 3);
                 deck[1] = new Creature("c++", 1, 0, 6, 4, 8);
-                deck[2] = new Creature("html", 1, 0, 6, 3, 4);
+                deck[2] = new Creature("html", 1, 1, 6, 3, 4);
                 deck[3] = new Creature("swift", 1, 0, 5, 4, 4);
                 deck[4] = new Creature("java", 1, 0, 7, 10, 2);
                 deck[5] = new Creature("php", 1, 0, 4, 4, 5);
                 deck[6] = new Creature("python", 1, 0, 7, 3, 4);
                 deck[7] = new Creature("ruby", 1, 0, 4, 3, 4);
-                deck[8] = new Creature("sql", 1, 0, 6, 6, 4);
+                deck[8] = new Creature("sql", 1, 2, 6, 6, 4);
 
                 Creature css = new Creature("CSS", 2, 0, 6, 2, 2);
 
@@ -1153,6 +1153,7 @@ public class Board extends JFrame {
                         cards20.setVisible(true);
                         cards20.setIcon(getImageIcon(new File(file)));
                 }
+
                 if (mechanic == 1) {
                     boolean cssPlayed = false;
                     for (int i = 0; i < 6; i++) {
@@ -1188,6 +1189,11 @@ public class Board extends JFrame {
 
                     }
                 }
+
+                if (mechanic == 2) {
+                    field[boardpos - 1].setExhausted(0);
+                }
+
                 mana.setText("Mana: " + String.valueOf(userCMana) + "/" + String.valueOf(userMana));
                 gameState = 100;
             }
